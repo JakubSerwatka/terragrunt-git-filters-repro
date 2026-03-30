@@ -6,7 +6,7 @@ remote_state {
     backend = "local"
 
     config = {
-        path = "/tmp/terrafrunt-git-repo-state/${path_relative_to_include()}"
+        path = "/tmp/terragrunt-git-repo-state/${path_relative_to_include()}"
     }
     
     generate =  {
