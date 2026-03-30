@@ -1,0 +1,20 @@
+terraform {
+    source = "."
+}
+
+remote_state {
+    backend = "local"
+
+    config = {
+        path = "/tmp/terrafrunt-git-repo-state/${path_relative_to_include()}"
+    }
+    
+    generate =  {
+        path = "backend.tf"
+        if_exists = "overwrite_terragrunt"
+    }
+}
+
+dependency "unit-a" {
+    config_path = "../unit-a"
+}
