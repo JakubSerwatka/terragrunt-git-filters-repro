@@ -6,7 +6,7 @@ remote_state {
     backend = "local"
 
     config = {
-        path = "/tmp/terragrunt-git-repo-state/${path_relative_to_include()}"
+        path = "/tmp/terragrunt-git-repo-state/unit-b"
     }
     
     generate =  {
@@ -17,4 +17,12 @@ remote_state {
 
 dependency "unit-a" {
     config_path = "../unit-a"
+
+    mock_outputs = {
+          unit-a_output = "mock-unit-a-output"
+      }
+}
+
+inputs = {
+    dummy = dependency.unit-a.outputs.unit-a_output
 }
